@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: NuGet-Server.BaGet
-  namespace: NuGet
+  name: baget
+  namespace: nuget
 spec:
   selector:
     matchLabels:
-      app: BaGet
+      app: baget
   template:
     metadata:
       labels:
-        app: BaGet
+        app: baget
     spec:
       containers:
-      - name: BaGet
+      - name: baget
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         resources:
           limits:
