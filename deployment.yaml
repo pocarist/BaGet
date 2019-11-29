@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: NuGet-Server.BaGet
+  namespace: NuGet
+spec:
+  selector:
+    matchLabels:
+      app: BaGet
+  template:
+    metadata:
+      labels:
+        app: BaGet
+    spec:
+      containers:
+      - name: BaGet
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+            - name: pipeline-docker-registry
